@@ -145,17 +145,13 @@
       top:1250px;
       display:flex;
     }
-	  .sks {
+	  #sks {
 		  position: absolute;
 		  top:489px;
 		  left:10%;
 		  display:flex;
 	  }
-	  #check-checked ~ .sks {
-		  position: flex;
-		  top:389px;
-		  display:none;
-	  }
+	  
  
   </style>
 </head>
@@ -232,18 +228,27 @@
        
 <div><script type="text/javascript" src="//luckilygelatine.com/c780279eb1dbfdcf81c190d9345286a3/invoke.js"></script>
 </div>
-	<div class="sks">
+	<div id="sks">
 	<script type="text/javascript">
 	atOptions = {
 		'key' : '1bd88472e4c0fdd66e190d05d1a1ef92',
 		'format' : 'iframe',
-		'height' : 260,
-		'width' : 400,
+		'height' : 250,
+		'width' : 300,
 		'params' : {}
 	};
 </script>
 <script type="text/javascript" src="//luckilygelatine.com/1bd88472e4c0fdd66e190d05d1a1ef92/invoke.js"></script>
 	</div>
+
+	<script>
+  setTimeout(function() {
+    const ad = document.getElementById('sks');
+    ad.style.top = '300px';   // new vertical position
+    ad.style.left = '400px';  // new horizontal position
+  }, 15000); // 10 seconds
+	</script>
+	
   <!-- Fixed Button at the Bottom -->
   <button class="fixed-button">By- Anmol Jaiswal</button>
 </body>
