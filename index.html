@@ -121,20 +121,6 @@
       background-color: #f1f1f1;
     }
    
-   .fixed-button {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  cursor: pointer;
-}
     a {
       position: absolute;
       display:none;
@@ -152,11 +138,57 @@
 		  display:flex;
 	  }
 	  
- 
+	  body { margin: 0; font-family: Arial, sans-serif; }
+	  
+	  /* Modal styles */
+    #nameModal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+	  
+ button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    /* Fixed bottom button */
+    #nameButton {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 12px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      display: none;
+      z-index: 1000;
+    }
   </style>
 </head>
 
 <body>
+	
   <div class="main_box">
     <input type="checkbox" id="check">
 
@@ -202,7 +234,21 @@
         यह एक ऐसी कहानी है जिसकी शुरुआत एक बहुत ही भयानक जंगल से होती हैं, जहां से एक व्यक्ति रात को अपनी कार से गुजर रहा होता है, बीच जंगल पहुंचते ही अचानक उसकी कार बंद हो जाती है , वह कई बार कोशिश करता है लेकिन उसे केवल विफलता ही हाथ लगती है। रात भी बहुत हो चुकी थी, चंद्रमा की रोशनी से सब कुछ साफ नजर आ रहा था। मगर पूरे जंगल में सन्नाटा था बस पेड़ो के पत्तो के हिलने की धीमी आवाज थी। थक हार कर वह व्यक्ति इधर उधर देखने लगा। तभी उसे दूर एक रोशनी दिखाई दी उसने पास जाने का निश्चय किया क्युकी उसके पास और कोई रास्ता नही था। जैसे ही वह कुछ दूर आगे जाता है, इसे ऐसा महसूस होता है कोई उसका पीछा कर रहा है लेकिन वह सोचता है की, 'इतनी रात को इस जंगल में भला कौन हो सकता है! यह जरूर उसका कोई वहम है' और वह आगे बढ़ने लगता है। शीघ्र ही वह उस जगह पहुंच जाता है जहां से वह रोशनी आ रही थी, और वह सामने देखते ही एकदम से स्तब्ध रह जाता है क्युकी उसके सामने ....
       </p>
         </div>
+	  
   </div>
+
+	<!-- Modal -->
+<div id="nameModal">
+  <div class="modal-content">
+    <h2>Enter Your Name</h2>
+    <input type="text" id="userName" placeholder="Yahan apna naam likhen" />
+    <button onclick="submitName()">Submit</button>
+  </div>
+</div>
+
+<!-- Fixed Bottom Button -->
+<button id="nameButton"></button>
+	
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6009225874385897"
      crossorigin="anonymous"></script> 
   <!-- Video Player at the Bottom -->
@@ -251,7 +297,27 @@
 	<script type='text/javascript' src='//luckilygelatine.com/69/55/b8/6955b85cf0879af8ce7b721c715a56f4.js'></script>
 	<script type='text/javascript' src='//luckilygelatine.com/1c/a5/d6/1ca5d60c0429de126a939718a7787fe3.js'></script>
 	
-  <!-- Fixed Button at the Bottom -->
-  <button class="fixed-button">By- You</button>
+ <script>
+	function submitName() {
+    const nameInput = document.getElementById("userName").value.trim();
+    if (nameInput === "") {
+      alert("Please Enter your name first .");
+      return;
+    }
+
+    // Hide modal
+    document.getElementById("nameModal").style.display = "none";
+
+    // Show name on button
+    const nameBtn = document.getElementById("nameButton");
+    nameBtn.textContent = nameInput;
+    nameBtn.style.display = "block";
+  }
+
+  // Prevent interaction with background before name is entered
+  document.body.style.overflow = "hidden";
+
+	 </script>
+	
 </body>
 </html>
